@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.6 
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - "/opt/data/mysql:/var/lib/mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin 
+  redis:
+    image: redis:5.0.8 
+    container_name: redis 
+    ports:
+      - "6379:6379"
+  etcd:
+    image: gcr.io/etcd-development/etcd:v3.4.6
+    container_name: etcd
+    command: /usr/local/bin/etcd
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    volumes:
+      - "/opt/data/etcd:/etcd-data"
+    environment:
+      - ETCD_NAME=s1
+      - ETCD_DATA_DIR=/etcd-data
+      - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_INITIAL_ADVERTISE_PEER_URLS=http://0.0.0.0:2380
+      - ETCD_INITIAL_CLUSTER=s1=http://0.0.0.0:2380
+      - ETCD_INITIAL_CLUSTER_TOKEN=tkn
+      - ETCD_INITIAL_CLUSTER_STATE=new
