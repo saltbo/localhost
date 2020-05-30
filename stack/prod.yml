@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  caddy:
+    image: caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/etc/caddy:/etc/caddy"
+
+  portainer:
+    image: portainer/portainer 
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "portainer_data:/data portainer/portainer"
+      
+  # zpan:
+  #   image: saltbo/zpan
+  #   volumes:
+  #     - "/var/run/docker.sock:/var/run/docker.sock"
+  #     - "portainer_data:/data portainer/portainer"
+
+  gofc:
+    image: saltbo/gofc
+
+
+volumes:
+  portainer_data:
