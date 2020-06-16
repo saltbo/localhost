@@ -44,3 +44,9 @@ services:
       - "/opt/data/mongo:/data/db"
     ports:
       - "27017:27017"
+  envoy:
+    build: ./envoy
+    container_name: envoy
+    ports:
+      - "9901:9901"
+      - "8000:8080"
