@@ -44,6 +44,13 @@ services:
       - "/opt/data/mongo:/data/db"
     ports:
       - "27017:27017"
+  prom:
+    image: prom/prometheus:v2.19.0
+    container_name: prom
+    volumes:
+      - "/opt/data/prom:/etc/prometheus"
+    ports:
+      - "9001:9090"
   envoy:
     build: ./envoy
     container_name: envoy
