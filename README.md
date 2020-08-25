@@ -1,4 +1,4 @@
-# oh-my-env
+# oh-my-stacks
 
 Oh, run my environment on anywhere.
 

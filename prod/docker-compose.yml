@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  inlets:
+    image: inlets/inlets:2.6.4
+    networks:
+    - system_default
+    command: server --token $INLETS_TOKEN
+      
+  zpan:
+    image: saltbo/zpan
+    networks:
+    - system_default
+    volumes:
+      - "/etc/moreu:/root"
+
+  gofc:
+    networks:
+    - system_default
+    image: saltbo/gofc
