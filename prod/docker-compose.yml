@@ -5,7 +5,7 @@ services:
     image: inlets/inlets:2.6.4
     networks:
     - system_default
-    command: server --token $INLETS_TOKEN
+    command: server --token ${INLETS_TOKEN}
       
   zpan:
     image: saltbo/zpan
@@ -18,3 +18,8 @@ services:
     networks:
     - system_default
     image: saltbo/gofc
+
+    
+networks:  
+  system_default:
+    external: true
