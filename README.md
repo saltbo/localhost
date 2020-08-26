@@ -8,10 +8,10 @@ Oh, run my environment on anywhere.
 ### Docker-Compose
 
 ```bash
-docker-compose -f oh-my-env/stack/dev.yml up -d
+docker-compose -f oh-my-stacks/local/docker-compose.yml up -d
 ```
 
 ### Docker-Swarm
 
 ```bash
-docker stack deploy -c oh-my-env/stack/prod.yml oh-my-stack 
+docker stack deploy -c oh-my-stacks/infra/docker-compose.yml infra
