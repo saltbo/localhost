@@ -1,5 +1,7 @@
+mirror.saltbo.cn
 
-http://mirror.saltbo.cn {
-        reverse_proxy /ca43902/* 192.168.0.1:37270
-        reverse_proxy docker-mirror:8222
-}
+root * /data/webroot
+
+reverse_proxy /ca43902/* 192.168.0.1:37270
+
+reverse_proxy docker-mirror:5000

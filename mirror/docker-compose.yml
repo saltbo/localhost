@@ -7,16 +7,18 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    volumes:
+      - /data/mirror/caddy:/etc/caddy
+      - /data/mirror/website:/data/webroot
 
   registry:
     image: registry:2
-    container_name: docker_registry
+    container_name: docker-mirror
     ports:
       - "5000:5000"
     volumes:
       - /etc/docker/registry:/etc/docker/registry
       - /var/lib/registry:/var/lib/registry
-
 
 networks:
   default:
