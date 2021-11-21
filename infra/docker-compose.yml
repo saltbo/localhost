@@ -1,6 +1,13 @@
 version: "3"
 
 services:
+  ingress:
+    image: nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - "./nginx.conf.d:/etc/nginx/conf.d"
+
   inlets:
     image: inlets/inlets:2.6.4
     command: server --token ${INLETS_TOKEN}
