@@ -1,6 +1,16 @@
 version: "3"
 
 services:
+  mongo:
+    image: mongo:4.2
+    container_name: mongo 
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: admin 
+    volumes:
+      - "/opt/data/mongo:/data/db"
+    ports:
+      - "27017:27017"
   mysql:
     image: mysql:5.6 
     container_name: mysql
@@ -34,26 +44,3 @@ services:
     ports:
       - "2379:2379"
       - "2380:2380"
-  mongo:
-    image: mongo:4.2
-    container_name: mongo 
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: admin 
-    volumes:
-      - "/opt/data/mongo:/data/db"
-    ports:
-      - "27017:27017"
-  prom:
-    image: prom/prometheus:v2.19.0
-    container_name: prom
-    volumes:
-      - "/opt/data/prom:/etc/prometheus"
-    ports:
-      - "9001:9090"
-  envoy:
-    build: ./envoy
-    container_name: envoy
-    ports:
-      - "9901:9901"
-      - "8000:8080"

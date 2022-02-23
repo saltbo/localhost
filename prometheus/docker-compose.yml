@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  prom:
+    image: prom/prometheus:v2.19.0
+    container_name: prom
+    volumes:
+      - "/opt/data/prom:/etc/prometheus"
+    ports:
+      - "9001:9090"
