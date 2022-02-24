@@ -1,9 +1,0 @@
-version: "3"
-
-services:
-  envoy:
-    build: ./envoy
-    container_name: envoy
-    ports:
-      - "9901:9901"
-      - "8000:8080"
