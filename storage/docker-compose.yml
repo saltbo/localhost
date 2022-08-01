@@ -28,7 +28,7 @@ services:
     ports:
       - "6379:6379"
   etcd:
-    image: gcr.io/etcd-development/etcd:v3.4.6
+    image: gcr.io/etcd-development/etcd:v3.5.4
     container_name: etcd
     environment:
       - ETCD_NAME=s1
