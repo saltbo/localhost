@@ -47,8 +47,24 @@ services:
       - "2379:2379"
       - "2380:2380"
 
+  neo4j:
+    image: neo4j:5.10.0
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment: 
+      - NEO4J_AUTH=none
+      - NEO4J_PLUGINS=["apoc"]
+      - apoc.export.file.enabled=true
+      - apoc.import.file.enabled=true
+      - apoc.import.file.use_neo4j_config=true
+    volumes:
+      - neo4j:/data
+      - ~/Develop:/import
 
 volumes:
   mongo:
   mysql:
   etcd:
+  neo4j:
